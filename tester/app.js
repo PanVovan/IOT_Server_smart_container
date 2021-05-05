@@ -23,7 +23,7 @@ client.on('connect', () => {
     client.publish('containers/new_container', options.clientId);
     setTimeout(() => client.publish(`containers/${options.clientId}`, "sss"), 3000);
 
-    setTimeout(() =>client.publish(`containers/${options.clientId}/fullness`, attribures.fullness.toString()), 3000);
-    setTimeout(() =>client.publish(`containers/${options.clientId}/longitude`, attribures.longitude.toString()), 3000);
-    setTimeout(() =>client.publish(`containers/${options.clientId}/latitude`, attribures.latitude.toString()), 3000);
+    setTimeout(() =>client.publish(`containers/${options.clientId}/fullness`, attribures.fullness.toString()), 1000);
+    setTimeout(() =>client.publish(`containers/${options.clientId}/longitude`, attribures.longitude.toString()), 1000);
+    setTimeout(() =>client.publish(`containers/${options.clientId}/latitude`, attribures.latitude.toString()), 1000);
 })

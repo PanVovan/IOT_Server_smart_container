@@ -16,9 +16,9 @@ class MQTTMessageHandler
         this.topics.set(topic, handler);
     }
 
-    debug()
+    start()
     {
-        console.log("debug info")
+        
     }
 
     process(topic, message)
