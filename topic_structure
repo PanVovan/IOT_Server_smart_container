@@ -23,3 +23,5 @@ containers
 ...(another container)
 |
 |---new_container (id)
+|
+|---connected
