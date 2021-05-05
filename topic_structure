@@ -1,0 +1,25 @@
+containers
+|
+|---container_id
+|              |
+|              |---fulness (integer)
+|              |
+|              |---longitude (float)
+|              |
+|              |---latitude (float)
+|              |
+|              ... (another features)
+|
+|---container_id
+|              |
+|              |---fulness (integer)
+|              |
+|              |---longitude (float)
+|              |
+|              |---latitude (float)
+|              |
+|              ...
+|
+...(another container)
+|
+|---new_container (id)

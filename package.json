@@ -1,0 +1,18 @@
+{
+  "name": "iot_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node ./src/__entry_point.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "panvovan",
+  "license": "ISC",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "mqtt": "^4.2.6",
+    "typescript": "^4.2.4"
+  }
+}
