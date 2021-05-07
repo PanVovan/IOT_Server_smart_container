@@ -18,17 +18,17 @@ class MQTTMessageHandler
 
     start()
     {
-        this.client.publish('connected', 'on');
+        this.client.publish('connected', 'true');
     }
 
     process(topic, message)
     {
-        let a = topic.split('/');
-        a[1] = '+';
-        a = a.join('/');
-        if(this.topics.has(a))
+        let handled = topic.split('/');
+        handled[1] = '+';
+        handled = handled.join('/');
+        if(this.topics.has(handled))
         {
-            this.topics.get(a)(topic, message);
+            this.topics.get(handled)(topic, message);
         }
         else
         {
@@ -38,7 +38,7 @@ class MQTTMessageHandler
 
     stop()
     {
-        this.client.publish('connected', 'off');
+        this.client.publish('connected', 'false');
     }
 
 };

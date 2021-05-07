@@ -16,28 +16,30 @@ const containers = new Map();
 
 handler.on('containers/new_container', (topic, message) => 
 {
-    console.log(`topic created: containers/${message.toString()}`);
     containers.set(message.toString(), new Trashbox(message.toString()));
 });
 
 handler.on(`containers/+/fullness`, (t, m) =>
 {
-    console.log(`fullness: ${m.toString()} container: ${getId(t)}`);
     containers.get(getId(t)).fullness = parseFloat(m)
 });
 
 handler.on(`containers/+/longitude`, (t, m) =>
 {
-    console.log(`longitude: ${m.toString()} container: ${getId(t)}`);
     containers.get(getId(t)).longitude = parseFloat(m)
 });
 
 handler.on(`containers/+/latitude`, (t, m) =>
 {
-    console.log(containers);
-    console.log(`latitude: ${m.toString()} container: ${getId(t)}`);
     containers.get(getId(t)).latitude = parseFloat(m)
 });
+
+handler.on('containers/stopped_container', (t, m) =>
+{
+    containers.delete(message.toString());
+});
+
+//console.log(`fullness: ${m.toString()} container: ${getId(t)}`);
 
 
 client.on('connect', (topic, message) => {

@@ -24,4 +24,7 @@ containers
 |
 |---new_container (id)
 |
-|---connected
+|---stopped_container (id)
+|
+
+server_started (bool)
