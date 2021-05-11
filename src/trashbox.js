@@ -1,10 +1,5 @@
 class Trashbox
 {
-    id;
-    fullness;
-    longitude;
-    latitude;
-
     constructor (id)
     {
         this.id = id;
@@ -15,4 +10,4 @@ class Trashbox
 };
 
 
-export {Trashbox};
+module.exports = {Trashbox};

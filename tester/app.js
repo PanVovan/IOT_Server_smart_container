@@ -1,5 +1,5 @@
-import mqtt from 'mqtt';
-import { MQTTMessageHandler } from '../src/mqtt_service/MQTTMessageHandler.ts';
+const mqtt = require('mqtt');
+const {MQTTMessageHandler} = require('../src/mqtt_service/MQTTMessageHandler.js')
 
 const BROKER_IP = 'broker.hivemq.com';
 const options = 
