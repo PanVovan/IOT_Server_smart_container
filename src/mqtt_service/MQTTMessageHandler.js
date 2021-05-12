@@ -1,18 +1,24 @@
-const { parse_topic, split_topic, generate_aliases} = require("./topic_parser");
+const {generate_aliases} = require("./topic_parser");
 
 class MQTTMessageHandler
 {
        
-    constructor(client)
+    constructor(client, emiter)
     {
         this.client = client;
         this.topics = new Map();
+        this.emiter = emiter;
     }
 
     on(topic, handler)
     {
         this.client.subscribe(topic);
         this.topics.set(topic, handler);
+    }
+
+    emit(message, ...args)
+    {
+        this.emiter.emit(message, args);
     }
 
     start()
@@ -27,7 +33,6 @@ class MQTTMessageHandler
             if(this.topics.has(element))
             {
                 this.topics.get(element)(topic, message);
-                break;
             }
         });
     }

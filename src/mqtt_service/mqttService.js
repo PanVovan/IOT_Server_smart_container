@@ -11,8 +11,11 @@ const options =
     protocol: 'mqtt'
 };
 
+const EventEmiter = require('events').EventEmitter;
+const emitter = new EventEmiter();
+
 const client = mqtt.connect(BROKER_IP, options);
-const handler = new MQTTMessageHandler(client);
+const handler = new MQTTMessageHandler(client, emitter);
 const containers = new Map();
 
 handler.on('containers/new_container', (topic, message) => 
@@ -25,14 +28,13 @@ handler.on('containers/new_container', (topic, message) =>
 handler.on(`containers/+/fullness`, (t, m) =>
 {
     containers.get(split_topic(t)[1]).fullness = parseFloat(m)
+    handler.emit('update', JSON.stringify(containers.get(split_topic(t)[1])));
 });
-
-
-
 
 handler.on(`containers/+/longitude`, (t, m) =>
 {
     containers.get(split_topic(t)[1]).longitude = parseFloat(m)
+    handler.emit('update', JSON.stringify(containers.get(split_topic(t)[1])));
 });
 
 
@@ -41,6 +43,7 @@ handler.on(`containers/+/longitude`, (t, m) =>
 handler.on(`containers/+/latitude`, (t, m) =>
 {
     containers.get(split_topic(t)[1]).latitude = parseFloat(m)
+    handler.emit('update', JSON.stringify(containers.get(split_topic(t)[1])));
 });
 
 
@@ -48,6 +51,7 @@ handler.on(`containers/+/latitude`, (t, m) =>
 
 handler.on('containers/stopped_container', (t, m) =>
 {
+    emitter.emit('delete', JSON.stringify(containers.get(message)));
     containers.delete(message.toString());
 });
 
@@ -68,6 +72,7 @@ class MQTTService {
     constructor() {
         this.client = client;
         this.containers = containers;
+        this.emitter = emitter;
     }
 
     getContainers()
@@ -75,5 +80,7 @@ class MQTTService {
         return containers;
     }
 }
+
+
 
 module.exports = MQTTService;

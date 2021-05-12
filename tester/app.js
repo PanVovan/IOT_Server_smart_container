@@ -13,8 +13,8 @@ const options =
 const attribures =
     {
         fullness: 300,
-        longitude: 300,
-        latitude: 300
+        longitude: 51.508,
+        latitude: -0.11
     }
 
 const client = mqtt.connect(BROKER_IP, options);
