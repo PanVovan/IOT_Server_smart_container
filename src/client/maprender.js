@@ -11,6 +11,7 @@ let containers;
 let containerMarkers = L.markerClusterGroup();
 
 const socket = io.connect('https://iot-smart-garbage-container.herokuapp.com')
+//const socket = io.connect('http://localhost:3000')
 
 socket.on('getcontainers', data => 
 {

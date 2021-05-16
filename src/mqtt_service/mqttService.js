@@ -56,9 +56,9 @@ handler.on(`containers/+/latitude`, (t, m) =>
 
 handler.on('containers/stopped_container', (t, m) =>
 {
-    emitter.emit('delete', JSON.stringify(message));
-    client.unsubscribe(`containers/${message.toString()}/+`)
-    containers.delete(message.toString());
+    emitter.emit('delete', JSON.stringify(m.toString()));
+    client.unsubscribe(`containers/${m.toString()}/+`)
+    containers.delete(m.toString());
 });
 
 
