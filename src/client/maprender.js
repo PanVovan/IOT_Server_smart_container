@@ -1,4 +1,4 @@
-let mymap = L.map('mapid').setView([51.505, -0.09], 13); 
+let mymap = L.map('map').setView([51.505, -0.09], 13); 
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 maxZoom: 18,
@@ -42,7 +42,11 @@ function render()
         containers.forEach((element, key, map) => 
         {
                 let marker = L.marker([element.longitude, element.latitude]);
-                marker.bindPopup(`<b>fullness:</b><br>${element.fullness}.`).openPopup();
+                marker.on('click', (e) =>
+                {
+                        getInfoViewPanel(element);
+                })
+                //marker.bindPopup(`<b>fullness:</b><br>${element.fullness}.`).openPopup();
                 containerMarkers.addLayer(marker);
         });
         mymap.addLayer(containerMarkers);
@@ -50,6 +54,24 @@ function render()
 
 // let marker = L.marker([51.5, -0.09]).addTo(mymap);
 
+
+function getInfoViewPanel(container)
+{
+        let panel = document.getElementById("myForm");
+        panel.innerHTML = 
+        `<form class="form-container">
+                <h1>Container ID: ${container.id}</h1>
+                <label><b>latitude:</b></label>
+                <label><b>${container.latitude}</b></label>
+
+                <label><b>longitude:</b></label>
+                <label><b>${container.longitude}</b></label>
+
+                <label><b>fullness:</b></label>
+                <label><b>${container.fullness}</b></label>
+        </form>`;
+        panel.style.display = "block";
+}
 
 // let circle = L.circle([51.508, -0.11], {
 //     color: 'red',

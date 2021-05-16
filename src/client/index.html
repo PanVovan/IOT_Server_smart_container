@@ -1,8 +1,90 @@
 <!DOCTYPE html>
 <html>
 	<head>
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+            }
+            
+            #map {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+        <style>
+            .open-button {
+                background-color: #555;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                opacity: 0.8;
+                position: fixed;
+                bottom: 23px;
+                right: 28px;
+                width: 280px;
+            }
+
+            /* Всплывающая форма-скрыта по умолчанию */
+            .form-popup {
+                display: none;
+                position: fixed;
+                bottom: 0;
+                right: 15px;
+                border: 3px solid #f1f1f1;
+                height: 100%;
+            }
+
+            /* Добавление стилей в контейнер форм */
+            .form-container {
+                height: 100%;
+                max-width: 300px;
+                padding: 10px;
+                background-color: white;
+            }
+
+            /* Поля ввода полной ширины */
+            .form-container input[type=text], .form-container input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                border: none;
+                background: #f1f1f1;
+            }
+
+            /* Когда входы получают фокус, сделайте что-нибудь */
+            .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+            /* Установите стиль для кнопки отправить/кнопка */
+            .form-container .btn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                margin-bottom:10px;
+                opacity: 0.8;
+            }
+
+            /* Добавьте красный цвет фона к кнопке отмена */
+            .form-container .cancel {
+                background-color: red;
+            }
+
+            /* Добавьте некоторые эффекты наведения на кнопки */
+            .form-container .btn:hover, .open-button:hover {
+                opacity: 1;
+            }
+        </style>
+            
 		<meta charset="UTF-8">
-		<title>Hello, files</title>
+		<title>Smart garbage containers</title>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
@@ -17,8 +99,16 @@
         <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2.3.0/dist/socket.io.slim.js"></script>
 	</head>
     <body>
-        <div id="mapid" style="width: 600px; height: 400px;"></div>
+        <div id="map"></div>
         <script src="maprender.js"></script>
+
+        <div class="form-popup" id="myForm" onclick="closeForm()"></div>
+
+        <script>
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+        </script>
     </body>
 
 </html>>
