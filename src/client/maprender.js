@@ -10,7 +10,7 @@ maxZoom: 18,
 let containers;
 let containerMarkers = L.markerClusterGroup();
 
-const socket = io.connect('https://iot-smart-garbage-container.herokuapp.com/')
+const socket = io.connect('https://iot-smart-garbage-container.herokuapp.com')
 
 socket.on('getcontainers', data => 
 {
