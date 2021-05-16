@@ -76,7 +76,7 @@ function getInfoViewPanel(container)
 }
 
 const containerIcon = L.icon({
-        iconUrl: 'container.svg',
+        iconUrl: `data:image/svg+xml;base64,${btoa('container.svg')}`
     
         iconSize:     [40, 40], // size of the icon
         iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
