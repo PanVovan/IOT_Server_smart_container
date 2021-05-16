@@ -3,23 +3,28 @@ const {MQTTMessageHandler} = require('./MQTTMessageHandler.js')
 const {Trashbox} = require('../trashbox.js');
 const { split_topic } = require("./topic_parser");
 
-const BROKER_IP = 'broker.hivemq.com';
+require('dotenv').config();
+
 const options = 
 {
-    clientId:"mqttjs01",
-    port: 1883,
-    protocol: 'mqtt'
+    host: process.env.MQTT_HOST,
+    clientId: process.env.SERVER_ID,
+    username: process.env.MQTT_USER,
+    password: process.env.MQTT_PASSWORD,
+    port: process.env.MQTT_PORT,
+    protocol: 'mqtts'
 };
 
 const EventEmiter = require('events').EventEmitter;
 const emitter = new EventEmiter();
 
-const client = mqtt.connect(BROKER_IP, options);
+const client = mqtt.connect(options);
 const handler = new MQTTMessageHandler(client, emitter);
 const containers = new Map();
 
 handler.on('containers/new_container', (topic, message) => 
 {
+    console.log(`new container: ${message.toString()}`)
     containers.set(message.toString(), new Trashbox(message.toString()));
 });
 
@@ -51,7 +56,8 @@ handler.on(`containers/+/latitude`, (t, m) =>
 
 handler.on('containers/stopped_container', (t, m) =>
 {
-    emitter.emit('delete', JSON.stringify(containers.get(message)));
+    emitter.emit('delete', JSON.stringify(message));
+    client.unsubscribe(`containers/${message.toString()}/#`)
     containers.delete(message.toString());
 });
 

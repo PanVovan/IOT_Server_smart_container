@@ -1,12 +1,15 @@
 const mqtt = require('mqtt');
 const {MQTTMessageHandler} = require('../src/mqtt_service/MQTTMessageHandler.js')
+require("dotenv").config();
 
-const BROKER_IP = 'broker.hivemq.com';
 const options = 
 {
-    clientId:process.argv[2],
-    port: 1883,
-    protocol: 'mqtt'
+    host: process.env.MQTT_HOST,
+    clientId: process.argv[2],
+    username: process.env.MQTT_USER,
+    password: process.env.MQTT_PASSWORD,
+    port: process.env.MQTT_PORT,
+    protocol: 'mqtts'
 };
 
 
@@ -17,7 +20,7 @@ const attribures =
         latitude: -0.11
     }
 
-const client = mqtt.connect(BROKER_IP, options);
+const client = mqtt.connect(options);
 const handler = new MQTTMessageHandler(client);
 
 handler.on('connected', (topic, message) => 

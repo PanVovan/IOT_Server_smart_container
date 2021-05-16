@@ -27,7 +27,9 @@ socket.on('update_containers', data =>
 
 socket.on('delete', data => 
 {
-        console.log(data);
+        container = JSON.parse(data);
+        containers.delete(container);
+        render();
 })
 
 function render()
