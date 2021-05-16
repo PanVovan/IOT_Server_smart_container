@@ -76,7 +76,7 @@ function getInfoViewPanel(container)
 }
 
 const containerIcon = L.icon({
-        iconUrl: document.getElementById("container"),
+        iconUrl: "container.svg",
     
         iconSize:     [40, 40], // size of the icon
     });
