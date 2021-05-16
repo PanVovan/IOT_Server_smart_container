@@ -14,7 +14,8 @@ const socket = io.connect('https://iot-smart-garbage-container.herokuapp.com')
 
 socket.on('getcontainers', data => 
 {
-        containers = new Map(JSON.parse(data));        
+        containers = new Map(JSON.parse(data));
+        containers.set(container.id, container);
         render();
 })
 
@@ -22,6 +23,7 @@ socket.on('update_containers', data =>
 {
         container = JSON.parse(data);
         containers.set(container.id, container);
+        console.log(containers);
         render();
 })
 
