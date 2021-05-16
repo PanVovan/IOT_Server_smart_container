@@ -60,7 +60,7 @@ function getInfoViewPanel(container)
         let panel = document.getElementById("myForm");
         panel.innerHTML = 
         `<form class="form-container">
-                <h1>Container ID: ${container.id}</h1>
+                <h1>Container ID:<br> ${container.id}</h1>
                 <label><b>fullness:</b></label>
                 <label>${container.fullness}</label>
 
