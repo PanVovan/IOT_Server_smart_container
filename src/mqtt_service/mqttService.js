@@ -3,7 +3,7 @@ const {MQTTMessageHandler} = require('./MQTTMessageHandler.js')
 const {Trashbox} = require('../trashbox.js');
 const { split_topic } = require("./topic_parser");
 
-require('dotenv').config();
+//require('dotenv').config();
 
 const options = 
 {
