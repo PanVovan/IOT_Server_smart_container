@@ -62,13 +62,13 @@ function getInfoViewPanel(container)
         `<form class="form-container">
                 <h1>Container ID: ${container.id}</h1>
                 <label><b>latitude:</b></label>
-                <label><b>${container.latitude}</b></label>
+                <label>${container.latitude}</label>
 
                 <label><b>longitude:</b></label>
-                <label><b>${container.longitude}</b></label>
+                <label>${container.longitude}</label>
 
                 <label><b>fullness:</b></label>
-                <label><b>${container.fullness}</b></label>
+                <label>${container.fullness}</label>
         </form>`;
         panel.style.display = "block";
 }
