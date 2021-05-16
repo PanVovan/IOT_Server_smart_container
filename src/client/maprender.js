@@ -41,7 +41,7 @@ function render()
         containerMarkers.clearLayers();
         containers.forEach((element, key, map) => 
         {
-                let marker = L.marker([element.longitude, element.latitude]);
+                let marker = L.marker([element.longitude, element.latitude], {icon: containerIcon});
                 marker.on('click', (e) =>
                 {
                         getInfoViewPanel(element);
@@ -61,17 +61,27 @@ function getInfoViewPanel(container)
         panel.innerHTML = 
         `<form class="form-container">
                 <h1>Container ID: ${container.id}</h1>
-                <label><b>latitude:</b></label>
-                <label>${container.latitude}</label>
-
-                <label><b>longitude:</b></label>
-                <label>${container.longitude}</label>
-
                 <label><b>fullness:</b></label>
                 <label>${container.fullness}</label>
+
+                <p>
+                        <label><b>latitude:</b></label>
+                        <label>${container.latitude}<br></label>
+
+                        <label><b>longitude:</b></label>
+                        <label>${container.longitude}<br></label>
+                </p>
         </form>`;
         panel.style.display = "block";
 }
+
+const containerIcon = L.icon({
+        iconUrl: 'container.svg',
+    
+        iconSize:     [40, 40], // size of the icon
+        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
 
 // let circle = L.circle([51.508, -0.11], {
 //     color: 'red',
