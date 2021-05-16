@@ -48,3 +48,10 @@ client.on('message', (topic, message) =>
     console.log("message:");
     handler.process(topic, message)
 });
+
+client.on('disconnect', () => 
+{
+    client.publish("containers/stopped_container", options.clientId, {
+        retain:true
+    })
+});

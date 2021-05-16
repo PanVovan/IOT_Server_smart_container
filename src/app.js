@@ -39,7 +39,7 @@ io.sockets.on('connection', (socket) =>
 
     emitter.on('delete', (data) =>
     {
-        socket.emit('delete', data[0]);
+        socket.emit('delete_container', data[0]);
     })
 })
 

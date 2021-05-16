@@ -25,10 +25,11 @@ socket.on('update_containers', data =>
         render();
 })
 
-socket.on('delete', data => 
+socket.on('delete_container', data => 
 {
         container = JSON.parse(data);
         containers.delete(container);
+        console.log(containers);
         render();
 })
 
