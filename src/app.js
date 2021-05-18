@@ -1,15 +1,11 @@
 const express = require('express');
-const mqtt_service = require("./mqtt_service/mqttService.js")
-
+const MQTTService = new (require("./mqtt_service/mqttService.js"));
 const app = express();
-
 const path = require('path');
 const fs = require('fs');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const port = process.env.PORT || 3000;
-
-app.set("mqtt_service", new mqtt_service())
 
 
 app.use(express.static(path.join(__dirname, 'client')))
@@ -23,7 +19,7 @@ io.sockets.on('connection', (socket) =>
 {
     let ID = (socket.id).toString();
 
-    const emitter = app.get("mqtt_service").emitter;
+    const emitter = MQTTService.emitter;
 
     socket.emit('getcontainers', getContainers());
 
@@ -45,5 +41,5 @@ io.sockets.on('connection', (socket) =>
 
 function getContainers()
 {
-    return JSON.stringify([...app.get("mqtt_service").getContainers()]);
+    return JSON.stringify([...MQTTService.getContainers()]);
 }
