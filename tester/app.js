@@ -9,7 +9,7 @@ const options =
     username: process.env.MQTT_USER,
     password: process.env.MQTT_PASSWORD,
     port: process.env.MQTT_PORT,
-    protocol: 'mqtt'
+    protocol: 'mqtts'
 };
 
 
