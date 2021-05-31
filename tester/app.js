@@ -6,6 +6,8 @@ const options =
 {
     host: process.env.MQTT_HOST,
     clientId: process.argv[2],
+    username: process.env.MQTT_USER,
+    password: process.env.MQTT_PASSWORD,
     port: process.env.MQTT_PORT,
     protocol: 'mqtt'
 };
