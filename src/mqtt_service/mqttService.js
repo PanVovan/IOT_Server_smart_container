@@ -32,7 +32,7 @@ handler.on('containers/new_container', (topic, message) =>
 
 handler.on(`containers/+/fullness`, (t, m) =>
 {
-    containers.get(split_topic(t)[1]).fullness = parseFloat(m)
+    containers.get(split_topic(t)[1]).fullness = parseInt(m)
     handler.emit('update', JSON.stringify(containers.get(split_topic(t)[1])));
 });
 
