@@ -145,8 +145,7 @@ ul {
     height: 100%;
     width: 100%;
     background-color: white;
-    position: absolute;
-    margin-left: 10px;
+    position: fixed;
 }
 
 .host_section
