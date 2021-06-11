@@ -143,9 +143,10 @@ ul {
 /* Добавление стилей в контейнер форм */
 .form-container {
     height: 100%;
-    width: 300px;
+    width: 100%;
     background-color: white;
     position: absolute;
+    margin-left: 10px;
 }
 
 .host_section
