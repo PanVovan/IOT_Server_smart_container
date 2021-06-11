@@ -131,7 +131,6 @@ ul {
 
 .form-popup {
     display: none;
-    position: absolute;
     bottom: 0;
     right: 0;
     height: 100%;
@@ -142,5 +141,4 @@ ul {
     height: 100%;
     width: 300px;
     background-color: white;
-    position: absolute;
 }
