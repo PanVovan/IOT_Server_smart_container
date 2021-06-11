@@ -138,6 +138,7 @@ ul {
     height: 100%;
 
     z-index: 10000;
+    margin-left: 30px;
 }
 
 /* Добавление стилей в контейнер форм */
@@ -146,7 +147,6 @@ ul {
     width: 300px;
     background-color: white;
     position: absolute;
-    margin-left: 30px;
 }
 
 .host_section
