@@ -9,13 +9,17 @@ const options =
     username: process.env.MQTT_USER,
     password: process.env.MQTT_PASSWORD,
     port: process.env.MQTT_PORT,
-    protocol: 'mqtt'
+    protocol: 'mqtt',
+    will: {
+        topic: "containers/stopped_container",
+        message: process.argv[2]
+    }
 };
 
 
 const attribures =
     {
-        fullness: 300,
+        fullness: 50,
         longitude: 51.508,
         latitude: -0.11
     }
