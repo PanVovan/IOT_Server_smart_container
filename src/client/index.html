@@ -1,65 +1,67 @@
 <!DOCTYPE html>
-<html>
-	<head>
-        <style>
-            body {
-                margin: 0;
-                overflow: hidden;
-            }
-            
-            #map {
-                position: fixed;
-                width: 100%;
-                height: 100%;
-            }
-        </style>
-        <style>
-            .form-popup {
-                display: none;
-                position: fixed;
-                bottom: 0;
-                right: 0;
-                border: 3px solid #f1f1f1;
-                border-radius: 27px 0px 0px 25px ;
-                height: 100%;
-            }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+	<title>Smart garbage containers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <link rel="stylesheet" href="assets/css/style.css">
 
-            /* Добавление стилей в контейнер форм */
-            .form-container {
-                height: 100%;
-                width: 300px;
-                border: 3px solid #f1f1f1;
-                border-radius: 24px 0px 0px 25px ;
-                background-color: white;
-            }
-        </style>
-            
-		<meta charset="UTF-8">
-		<title>Smart garbage containers</title>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 
-        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
-        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
-        <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2.3.0/dist/socket.io.slim.js"></script>
+</head>
+<body>
 
-        <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2.3.0/dist/socket.io.slim.js"></script>
-	</head>
-    <body>
-        <div id="map"></div>
-        <script src="maprender.js"></script>
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="logo_container">
+                <object class="logo__image" type="image/svg+xml" data="assets/images/logo.svg">
+                </object>
+                <h1 class="logo__name">Smartcon</h1>
+            </div>
 
-        <div class="form-popup" id="myForm" onclick="closeForm()"></div>
+            <div class="menu_container">
+                <nav class="nav">
+                    <ul class="menu">
+                        <li><a class="menu__link" href = "#">Map</a></li>
+                        <li><a class="menu__link" href = "#">Graph</a></li>
+                    </ul>
+                </nav>
+                <object class="menu__image" type="image/svg+xml" data="assets/images/menu.svg">
+                </object>
+            </div>
+        </div>
+    </div>
+</header>
 
-        <script>
-            function closeForm() {
-                document.getElementById("myForm").style.display = "none";
-            }
-        </script>
-    </body>
+<section>
+<div class="maphost">
+    <div id="map"></div>
+    <div class="form-popup" id="myForm" onclick="closeForm()"></div>
 
-</html>>
+</div>
+</section>
+
+
+
+<script src="maprender.js"></script>
+<script>
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
