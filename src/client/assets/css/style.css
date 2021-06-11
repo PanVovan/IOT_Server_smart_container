@@ -142,4 +142,5 @@ ul {
     height: 100%;
     width: 300px;
     background-color: white;
+    position: absolute;
 }
