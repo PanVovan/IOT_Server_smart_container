@@ -136,6 +136,7 @@ ul {
     bottom: 0;
     right: 0;
     height: 100%;
+    z-index: 10000;
 }
 
 /* Добавление стилей в контейнер форм */
@@ -143,10 +144,12 @@ ul {
     height: 100%;
     width: 300px;
     background-color: white;
+    position: absolute;
 }
 
 .host_section
 {
     width: 100%;
     height: 100%;
+    position: relative;
 }
