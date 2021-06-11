@@ -40,9 +40,6 @@ client.on('connect', () =>
     setTimeout(() =>client.publish(`containers/${options.clientId}/fullness`, attribures.fullness.toString()), 1000);
     setTimeout(() =>client.publish(`containers/${options.clientId}/longitude`, attribures.longitude.toString()), 1000);
     setTimeout(() =>client.publish(`containers/${options.clientId}/latitude`, attribures.latitude.toString()), 1000);
-    setTimeout(() =>client.publish("containers/stopped_container", options.clientId, {
-        retain:true
-    }), 10000);
 })
 
 client.on('message', (topic, message) => 
