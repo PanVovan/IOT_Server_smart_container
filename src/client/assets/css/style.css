@@ -131,7 +131,7 @@ ul {
 
 .form-popup {
     display: none;
-    position: fixed;
+    position: relative;
     bottom: 0;
     right: 0;
     height: 100%;
