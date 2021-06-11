@@ -136,6 +136,7 @@ ul {
     bottom: 0;
     right: 0;
     height: 100%;
+
     z-index: 10000;
 }
 
@@ -145,6 +146,7 @@ ul {
     width: 300px;
     background-color: white;
     position: absolute;
+    margin-left: 30px;
 }
 
 .host_section
