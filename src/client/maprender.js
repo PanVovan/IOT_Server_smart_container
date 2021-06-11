@@ -73,6 +73,7 @@ function getInfoViewPanel(container)
                 </p>
         </form>`;
         panel.style.display = "block";
+        panel.style.zIndex = 100;
 }
 
 const containerIcon = L.icon({
