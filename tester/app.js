@@ -5,23 +5,23 @@ require("dotenv").config();
 const options = 
 {
     host: process.env.MQTT_HOST,
-    clientId: process.argv[2],
+    clientId: "garbage",
     username: process.env.MQTT_USER,
     password: process.env.MQTT_PASSWORD,
     port: process.env.MQTT_PORT,
     protocol: 'mqtt',
     will: {
         topic: "containers/stopped_container",
-        message: process.argv[2]
+        message: "garbage"
     }
 };
 
 
 const attribures =
     {
-        fullness: 50,
-        longitude: 51.508,
-        latitude: -0.11
+        fullness: 51,
+        longitude: 55.5414643,
+        latitude: 37.0792043
     }
 
 const client = mqtt.connect(options);
